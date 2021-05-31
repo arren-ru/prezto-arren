@@ -1,11 +1,12 @@
 (( ! $+commands[rg] )) && return 1
 
-export FZF_RGSEL_PREVIEW="${0:h}/external/preview"
+export FZF_RGSEL_PREVIEW="${0:h}/external/preview.sh"
 if [[ ! -x $FZF_RGSEL_PREVIEW ]]; then
-    echo -e "\e[33mDownloading fzf script preview.sh\e[0m"
+    echo -en "\e[s"
     curl --progress-bar --create-dirs -fLo "$FZF_RGSEL_PREVIEW" \
         "https://raw.githubusercontent.com/junegunn/fzf.vim/master/bin/preview.sh"
     chmod +x "$FZF_RGSEL_PREVIEW"
+    echo -en "\e[u\e[J"
 fi
 
 __fzf_rgsel() {

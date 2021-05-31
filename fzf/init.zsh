@@ -20,6 +20,7 @@ fi
 
 if ! zstyle -t ':prezto:module:fzf:opts' skip 'yes'; then
     (( ! $+FZF_DEFAULT_OPTS )) && export FZF_DEFAULT_OPTS='-e --reverse --info=inline --height=100% --preview-window=up --color=dark,hl:9,hl+:9'
+    (( ! $+FZF_COMPLETION_TRIGGER )) && export FZF_COMPLETION_TRIGGER='..'
 
     (( ! $+FZF_ALT_C_OPTS )) && {
         if (( $+commands[exa] )); then
