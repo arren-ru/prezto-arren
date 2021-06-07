@@ -11,9 +11,11 @@ fi
 
 __fzf_rgsel() {
     setopt localoptions pipefail no_aliases 2>/dev/null
-    rg --column --line-number --no-heading --color=always --smart-case -- '' \
-        | fzf --no-multi --phony --ansi --preview="$FZF_RGSEL_PREVIEW {}" \
-            --bind='change:reload:rg --column --line-number --no-heading --color=always --smart-case -- {q} || true' \
+    local opts=(--follow --column --line-number --no-heading --color=always --smart-case)
+    rg ${opts[@]} -- '' \
+        | fzf --no-multi --phony --ansi \
+          --preview="$FZF_RGSEL_PREVIEW {}" \
+          --bind="change:reload:rg ${opts[*]} -- {q} || true" \
         | cut -d: -f1,2,3
     local ret=$?
     echo
