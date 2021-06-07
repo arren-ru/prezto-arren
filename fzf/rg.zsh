@@ -1,4 +1,6 @@
-(( ! $+commands[rg] )) && return 1
+if (( ! $+commands[rg] )); then
+    return 1
+fi
 
 export FZF_RGSEL_PREVIEW="${0:h}/external/preview.sh"
 if [[ ! -x $FZF_RGSEL_PREVIEW ]]; then

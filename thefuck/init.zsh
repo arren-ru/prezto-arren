@@ -1,6 +1,7 @@
-(( $+commands[thefuck] )) || return 1
+if (( ! $+commands[thefuck] )); then
+    return 1
+fi
 
-# lazy load to improve loading speed and eval aliasing on demand
 fuck() {
     unfunction "$0"
     eval $(thefuck --alias)
@@ -16,4 +17,3 @@ fuck-command-line() {
 
 zle -N fuck-command-line
 bindkey "\e\e" fuck-command-line
-
