@@ -26,26 +26,6 @@
 #### Minimal `.zshrc`:
 
 ```sh
-export LANG=en_US.UTF-8
-export EDITOR=vim
-export PATH="$HOME/local/.bin:/usr/local/sbin:$PATH"
-
-if [[ "$OSTYPE" == darwin* ]]; then
-    export HOMEBREW_CASK_OPTS=" --no-binaries --appdir=$HOME/Applications "
-    [[ -d "/usr/local/opt/curl" ]] && export PATH="/usr/local/opt/curl/bin:$PATH"
-    ulimit -S -n 10240
-fi
-
-export HELM_CACHE_HOME="$HOME/.cache/helm"
-export HELM_DATA_HOME="$HOME/.local/share/helm"
-export HELM_CONFIG_HOME="$HOME/.config/helm"
-
-export GOPROXY=direct
-export GOSUMDB=off
-export GOPATH="$HOME/.golang"
-
-export PATH="$PATH:$GOPATH/bin:$HOME/.krew/bin:$HOME/.composer/vendor/bin"
-
 zstyle ':prezto:load' pmodule \
     environment spectrum ls-colors \
     terminal prompt syntax-highlighting autosuggestions completion \
@@ -64,11 +44,8 @@ zstyle ':prezto:module:fzf:opts:*'   ignore      . .git/ .composer/ .golang/ Lib
 
 if [[ ! -f $HOME/.zsh/prezto/init.zsh ]]; then
     for pmodrepo in sorin-ionescu/prezto arren-ru/prezto-arren; do
-        [[ -d "$HOME/.zsh/${pmodrepo:r:t}" ]] && continue
-        git clone --quiet --depth=1 --shallow-submodules --recursive --jobs=8 \
-            "git@github.com:${pmodrepo}.git" "$HOME/.zsh/${pmodrepo:r:t}"
+        git clone --quiet --depth=1 --shallow-submodules --recursive --jobs=8 "https://github.com/${m}.git" "$HOME/.zsh/${m:t}"
     done
-    unset pmodrepo
 fi
 
 zstyle ':prezto:load' pmodule-dirs $HOME/.zsh/prezto-*
