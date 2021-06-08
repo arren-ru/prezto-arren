@@ -40,7 +40,8 @@ zstyle ':prezto:module:utility'      correct     no
 zstyle ':prompt:pure:path'           color       36
 zstyle ':prompt:pure:prompt:success' color       240
 zstyle ':prezto:module:ls-colors'    theme       molokai
-zstyle ':prezto:module:fzf:opts:*'   ignore      . .git/ .composer/ .golang/ Library/
+zstyle ':prezto:module:fzf:*'        ignore      . .git/ .composer/ .golang/ Library/
+zstyle ':prezto:module:fzf:ctrl-t'   bat-theme   'Monokai Extended Bright'
 
 if [[ ! -f $HOME/.zsh/prezto/init.zsh ]]; then
     for pmodrepo in sorin-ionescu/prezto arren-ru/prezto-arren; do
