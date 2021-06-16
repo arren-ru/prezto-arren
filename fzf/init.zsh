@@ -51,7 +51,7 @@ if ! zstyle -t ':prezto:module:fzf:ctrl-t' skip 'yes'; then
         export FZF_CTRL_T_OPTS='-m -e'
         if (( $+commands[bat] )); then
             zstyle -s ':prezto:module:fzf:ctrl-t' bat-theme fzf_bat_theme
-            FZF_CTRL_T_OPTS+="--preview 'bat --theme=${(q)fzf_bat_theme} --color=always --style=numbers,changes --line-range=:500 {}'"
+            FZF_CTRL_T_OPTS+=" --preview 'bat --theme=${(q)fzf_bat_theme} --color=always --style=numbers,changes --line-range=:500 {}'"
             unset fzf_bat_theme
         fi
     fi
