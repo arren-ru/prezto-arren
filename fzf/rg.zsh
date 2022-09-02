@@ -35,4 +35,4 @@ fzf-rg-widget() {
 }
 
 zle     -N    fzf-rg-widget
-bindkey '\er' fzf-rg-widget
+bindkey '^Y' fzf-rg-widget
