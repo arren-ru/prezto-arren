@@ -17,6 +17,9 @@ if (( ! $+FZF_COMPLETION_TRIGGER )) export FZF_COMPLETION_TRIGGER='..'
 if (( ! $+FZF_DEFAULT_OPTS )) \
     export FZF_DEFAULT_OPTS='-e --reverse --info=inline --height=100% --preview-window=up --color=dark,hl:9,hl+:9'
 
+if (( ! $+FZF_TMUX_OPTS )) \
+    export FZF_TMUX_OPTS='-p 80%,80%'
+
 if (( $+commands[fd] )); then
     _fzf_compgen_path() {
         fd -HLE '.git' . "$1"

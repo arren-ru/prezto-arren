@@ -13,9 +13,9 @@ fi
 
 __fzf_rgsel() {
     setopt localoptions pipefail no_aliases 2>/dev/null
-    local opts=(--follow --column --line-number --no-heading --color=always --smart-case)
+    local opts=(--column --line-number --no-heading --color=always --smart-case)
     rg ${opts[@]} -- '' \
-        | fzf --no-multi --phony --ansi \
+        | $(__fzfcmd) +m --ansi \
           --delimiter=: --preview-window="+{2}-5" \
           --preview="$FZF_RGSEL_PREVIEW {}" \
           --bind="change:reload:rg ${opts[*]} -- {q} || true" \
